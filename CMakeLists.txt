@@ -2,7 +2,9 @@
 cmake_minimum_required( VERSION 2.8 )
 project( xrdcl-authz-plugin )
 
-find_package( XRootD REQUIRED CONFIG)
+set( CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake )
+
+find_package( Xrootd REQUIRED )
 
 if(NOT XROOTD_PLUGIN_VERSION)
   find_program(XROOTD_CONFIG_EXECUTABLE xrootd-config)
@@ -24,11 +26,11 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 add_library(XrdClAuthzPlugin-${XROOTD_PLUGIN_VERSION} MODULE src/XrdClAuthzPlugin.cc)
 target_link_libraries(XrdClAuthzPlugin-${XROOTD_PLUGIN_VERSION} ${XROOTD_LIBRARIES})
 set_target_properties(XrdClAuthzPlugin-${XROOTD_PLUGIN_VERSION} PROPERTIES LINK_FLAGS "-Wl,--version-script=${PROJECT_SOURCE_DIR}/configs/export-symbols")
-target_include_directories(XrdClAuthzPlugin-${XROOTD_PLUGIN_VERSION} PRIVATE ${XROOTD_INCLUDE_DIRS})
+target_include_directories(XrdClAuthzPlugin-${XROOTD_PLUGIN_VERSION} PRIVATE ${XROOTD_INCLUDE_DIRS} ${XROOTD_INCLUDES})
 
 add_library(XrdSecunix-${XROOTD_PLUGIN_VERSION} MODULE src/XrdSecProtocolunix.cc)
 set_target_properties(XrdSecunix-${XROOTD_PLUGIN_VERSION} PROPERTIES LINK_FLAGS "-Wl,--version-script=${PROJECT_SOURCE_DIR}/configs/export-symbols-anon")
-target_include_directories(XrdSecunix-${XROOTD_PLUGIN_VERSION} PRIVATE ${XROOTD_INCLUDE_DIRS})
+target_include_directories(XrdSecunix-${XROOTD_PLUGIN_VERSION} PRIVATE ${XROOTD_INCLUDE_DIRS} ${XROOTD_INCLUDES})
 
 if (NOT DEFINED LIB_INSTALL_DIR)
   SET(LIB_INSTALL_DIR "lib")
