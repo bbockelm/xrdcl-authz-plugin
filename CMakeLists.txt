@@ -2,8 +2,6 @@
 cmake_minimum_required( VERSION 2.8 )
 project( xrdcl-authz-plugin )
 
-set( CMAKE_MODULE_PATH /usr/share/xrootd/cmake )
-
 find_package( XRootD REQUIRED )
 
 if(NOT XROOTD_PLUGIN_VERSION)
