@@ -1,7 +1,7 @@
 Name:           xrdcl-authz-plugin
-Version:        1.0
+Version:        0.1
 Release:        1%{?dist}
-Summary:        Library for xrootd client to pick up WLCG Token
+Summary:        Plugin for xrootd client to pick up WLCG Token
 
 License:        LPGL 3.0
 URL:            https://github.com/bbockelm/xrdcl-authz-plugin
@@ -16,7 +16,7 @@ Requires:      xrootd-server
 Requires:      xrootd-client
 
 %description
-
+Plugin for XRootD client to find and use the WLCG tokens.
 
 %prep
 %setup -q
@@ -52,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Wed May 20 2020 Derek Weitzel <dweitzel@unl.edu> - 1.0-1
+* Wed May 20 2020 Derek Weitzel <dweitzel@unl.edu> - 0.1-1
 - Initial RPM
 
 
