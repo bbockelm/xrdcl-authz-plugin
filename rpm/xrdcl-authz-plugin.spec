@@ -54,7 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Wed May 20 2020 Derek Weitzel <dweitzel@unl.edu> - 0.1-1
 - Initial RPM
-
-
-
-
