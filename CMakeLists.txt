@@ -2,7 +2,7 @@
 cmake_minimum_required( VERSION 2.8 )
 project( xrdcl-authz-plugin )
 
-find_package( XRootD REQUIRED CONFIG)
+find_package( XRootD REQUIRED )
 
 if(NOT XROOTD_PLUGIN_VERSION)
   find_program(XROOTD_CONFIG_EXECUTABLE xrootd-config)
